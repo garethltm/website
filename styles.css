@@ -1,0 +1,141 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  overflow: hidden;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.center {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-name {
+  position: absolute;
+  top: -20px; /* Adjust this value to position the text above the orbit */
+  left: 50%;
+  transform: translateX(40px);
+  width: 100%;
+}
+
+.orbit-name text {
+  fill: rgba(255, 255, 255, 0.3);
+  font-family: Arial, sans-serif;
+}
+
+.orbit1 .orbit-name text {
+  font-size: 20px;
+}
+.orbit2 .orbit-name text {
+  font-size: 24px;
+}
+.orbit3 .orbit-name text {
+  font-size: 28px;
+}
+
+.orbit-name path {
+  stroke: none;
+}
+
+.orbit {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.orbit1 {
+  width: 200px;
+  height: 200px;
+}
+.orbit2 {
+  width: 500px;
+  height: 500px;
+}
+.orbit3 {
+  width: 800px;
+  height: 800px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.orbit1 .dot {
+  transform: translateX(200px) translateY(0px);
+  animation: orbit-rotate1 20s linear infinite;
+}
+
+.orbit2 .dot {
+  transform: translateX(500px) translateY(0px);
+  animation: orbit-rotate2 30s linear infinite;
+}
+
+.orbit3 .dot {
+  transform: translateX(800px) translateY(0px);
+  animation: orbit-rotate3 40s linear infinite;
+}
+
+.pause-animation {
+  animation-play-state: paused;
+}
+
+.textbox {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 200px;
+  z-index: 10;
+}
+
+@keyframes orbit-rotate1 {
+  from {
+    transform: rotate(0deg) translateX(100px) translateY(0px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px) translateY(0px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-rotate2 {
+  from {
+    transform: rotate(0deg) translateX(250px) translateY(0px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(250px) translateY(0px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-rotate3 {
+  from {
+    transform: rotate(0deg) translateX(400px) translateY(0px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(400px) translateY(0px) rotate(-360deg);
+  }
+}
