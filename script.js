@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     orbit3: {
       header: "Education",
-      body: "Bachelor's degree in Computer Science with a focus on software engineering and data science. Continuous learner committed to professional development, staying updated with emerging technologies and industry trends.",
+      body: "Bachelor's degree in Computer Science from the University of Auckland with a background on Artificial Intelligence, Machine Learning and Software Development. Continuous learner committed to professional development, staying updated with emerging technologies and industry trends.",
     },
   };
 
   // Orbit sizes for precise detection
   const orbitSizes = {
-    orbit3: 300, // Outer orbit radius
+    orbit3: 302, // Outer orbit radius
     orbit2: 202, // Middle orbit radius
     orbit1: 102, // Inner orbit radius
   };
