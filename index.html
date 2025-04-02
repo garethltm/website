@@ -10,6 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Add Font Awesome for the LinkedIn icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="instructions-container">
@@ -51,6 +56,27 @@
         <div class="dot" data-description="My Education"></div>
       </div>
     </div>
+
+    <!-- Social links container with LinkedIn and Email -->
+    <div class="social-links-container">
+      <!-- LinkedIn link -->
+      <a
+        href="https://www.linkedin.com/in/garethltm"
+        target="_blank"
+        class="social-link linkedin-link"
+      >
+        <i class="fab fa-linkedin"></i>
+      </a>
+
+      <!-- Email link with tooltip -->
+      <div class="email-link-wrapper">
+        <a href="mailto:garethlee2000@gmail.com" class="social-link email-link">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <span class="email-tooltip">garethlee2000@gmail.com</span>
+      </div>
+    </div>
+
     <div class="tooltip" id="tooltip"></div>
     <div class="info-box" id="infoBox"></div>
     <script src="script.js"></script>

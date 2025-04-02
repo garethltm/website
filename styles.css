@@ -1,3 +1,21 @@
+/* Theme variables - consolidated at the top */
+:root {
+  --bg-gradient: linear-gradient(45deg, #2c3e50, #4ca1af);
+  --info-box-bg: rgba(255, 255, 255, 0.9);
+  --info-box-text: #2c3e50;
+  --orbit-border: rgba(255, 255, 255, 0.5);
+  --dot-color: #fff;
+  --text-color: #fff;
+  --highlight-shadow: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(45deg, #262626, #001e48);
+  --info-box-bg: rgba(30, 30, 40, 0.9);
+  --info-box-text: #e0e0e0;
+}
+
+/* Base styles */
 body,
 html {
   height: 100%;
@@ -5,88 +23,25 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, #2c3e50, #4ca1af);
+  background: var(--bg-gradient);
   background-size: 400% 400%;
   animation: gradientAnimation 10s ease infinite;
   overflow: hidden;
-  color: #fff;
+  color: var(--text-color);
   font-family: "Poppins", sans-serif;
 }
 
-.center {
-  position: absolute;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  font-size: 2rem;
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-.orbit-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.orbit-name {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #ffffff;
-  font-weight: 400;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
-.orbit {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  border: 2px dashed rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.orbit1 {
-  width: 200px;
-  height: 200px;
-}
-.orbit2 {
-  width: 400px;
-  height: 400px;
-}
-.orbit3 {
-  width: 600px;
-  height: 600px;
-}
-
-.dot {
-  width: 15px;
-  height: 15px;
-  background: #fff;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-.dot:hover {
-  transform: translate(-50%, -50%) scale(1.3);
-}
-
-.orbit1 .dot {
-  animation: orbit-rotate1 15s linear infinite;
-}
-.orbit2 .dot {
-  animation: orbit-rotate2 20s linear infinite;
-}
-.orbit3 .dot {
-  animation: orbit-rotate3 25s linear infinite;
+/* Animations */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes orbit-rotate1 {
@@ -116,28 +71,113 @@ html {
   }
 }
 
-@keyframes gradientAnimation {
+@keyframes highlightOrbit {
   0% {
-    background-position: 0% 50%;
+    border-color: var(--orbit-border);
   }
   50% {
-    background-position: 100% 50%;
+    border-color: var(--dot-color);
+    box-shadow: 0 0 15px var(--highlight-shadow);
   }
   100% {
-    background-position: 0% 50%;
+    border-color: var(--orbit-border);
   }
 }
 
+/* Center content */
+.center {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--highlight-shadow);
+}
+
+/* Orbit layout */
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-name {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-color);
+  font-weight: 400;
+  text-shadow: 0 0 5px var(--highlight-shadow);
+}
+
+.orbit {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 2px dashed var(--orbit-border);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.orbit1 {
+  width: 200px;
+  height: 200px;
+}
+.orbit2 {
+  width: 400px;
+  height: 400px;
+}
+.orbit3 {
+  width: 600px;
+  height: 600px;
+}
+
+.orbit.highlight {
+  animation: highlightOrbit 0.8s ease-in-out;
+}
+
+/* Dots on orbits */
+.dot {
+  width: 15px;
+  height: 15px;
+  background: var(--dot-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px var(--highlight-shadow);
+}
+
+.dot:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.orbit1 .dot {
+  animation: orbit-rotate1 15s linear infinite;
+}
+.orbit2 .dot {
+  animation: orbit-rotate2 20s linear infinite;
+}
+.orbit3 .dot {
+  animation: orbit-rotate3 25s linear infinite;
+}
+
+/* Info box */
 .info-box {
   position: absolute;
   right: -300px;
   top: 50%;
   transform: translateY(-50%);
   width: 250px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #2c3e50;
+  background: var(--info-box-bg);
+  color: var(--info-box-text);
   padding: 20px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px var(--highlight-shadow);
   transition: right 0.3s ease-in-out;
 }
 
@@ -149,30 +189,16 @@ html {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #2c3e50;
+  color: var(--info-box-text);
 }
+
 .info-box p {
   font-size: 1rem;
   line-height: 1.4;
-  color: #2c3e50;
+  color: var(--info-box-text);
 }
 
-@media (max-width: 768px) {
-  .orbit1 {
-    width: 150px;
-    height: 150px;
-  }
-  .orbit2 {
-    width: 300px;
-    height: 300px;
-  }
-  .orbit3 {
-    width: 450px;
-    height: 450px;
-  }
-}
-
-/* Existing styles remain the same, add these new styles at the end of the file */
+/* Instructions container */
 .instructions-container {
   position: absolute;
   left: 20px;
@@ -190,7 +216,7 @@ html {
   text-align: center;
   margin-bottom: 15px;
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 5px var(--highlight-shadow);
 }
 
 .instruction-step {
@@ -220,19 +246,647 @@ html {
   margin-top: 15px;
 }
 
-/* Update media query to adjust instructions for smaller screens */
+/* Social links */
+.social-links-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  opacity: 0.7;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* LinkedIn specific styling */
+.linkedin-link {
+  color: #ffffff;
+  background-color: rgba(0, 119, 181, 0.8);
+}
+
+.linkedin-link:hover {
+  background-color: #0077b5;
+}
+
+/* Email specific styling */
+.email-link {
+  color: #ffffff;
+  background-color: rgba(66, 133, 244, 0.8);
+}
+
+.email-link:hover {
+  background-color: #4285f4;
+}
+
+/* Tooltip styling for email */
+.email-link-wrapper {
+  position: relative;
+}
+
+.email-tooltip {
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-10px);
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  border-radius: 4px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.email-link-wrapper:hover .email-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  color: var(--text-color);
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Control icon visibility based on theme */
+#theme-toggle .sun-icon,
+#theme-toggle .moon-icon {
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  position: absolute;
+}
+
+#theme-toggle.dark-mode .sun-icon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+#theme-toggle.dark-mode .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+#theme-toggle.light-mode .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+#theme-toggle.light-mode .moon-icon {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+/* Permanent touch indicator below the name */
+.permanent-touch-indicator {
+  position: relative; /* Changed from absolute to relative */
+  margin-top: 10px; /* Add margin to position below orbit */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 6px 14px;
+  color: white;
+  font-size: 0.9rem;
+  z-index: 10;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block; /* To maintain proper centering */
+}
+
+.permanent-touch-indicator span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.permanent-touch-indicator span:before {
+  content: "👆";
+  margin-right: 8px;
+}
+
 @media (max-width: 768px) {
+  .permanent-touch-indicator {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+}
+
+@keyframes highlightOrbit {
+  0% {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.orbit.highlight {
+  animation: highlightOrbit 0.8s ease-in-out;
+}
+
+/* Animation for the indicator */
+@keyframes fadeInPulse {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.permanent-touch-indicator {
+  animation: fadeInPulse 0.6s ease-out forwards;
+}
+
+/* Improved responsive styles */
+@media (max-width: 1024px) {
+  .orbit1 {
+    width: 180px;
+    height: 180px;
+  }
+  .orbit2 {
+    width: 350px;
+    height: 350px;
+  }
+  .orbit3 {
+    width: 520px;
+    height: 520px;
+  }
+
+  /* Update animation paths */
+  @keyframes orbit-rotate1 {
+    from {
+      transform: rotate(0deg) translateX(90px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(90px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-rotate2 {
+    from {
+      transform: rotate(0deg) translateX(175px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(175px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-rotate3 {
+    from {
+      transform: rotate(0deg) translateX(260px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(260px) rotate(-360deg);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  /* Reduce orbit sizes further for tablets */
+  .orbit1 {
+    width: 140px;
+    height: 140px;
+  }
+  .orbit2 {
+    width: 280px;
+    height: 280px;
+  }
+  .orbit3 {
+    width: 420px;
+    height: 420px;
+  }
+
+  /* Adjust animations for smaller orbits */
+  @keyframes orbit-rotate1 {
+    from {
+      transform: rotate(0deg) translateX(70px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(70px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-rotate2 {
+    from {
+      transform: rotate(0deg) translateX(140px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(140px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-rotate3 {
+    from {
+      transform: rotate(0deg) translateX(210px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(210px) rotate(-360deg);
+    }
+  }
+
+  /* Hide instructions on mobile */
   .instructions-container {
-    left: 10px;
+    display: none;
+  }
+
+  /* Adjust social links */
+  .social-links-container {
+    bottom: 15px;
+    left: 15px;
+    gap: 8px;
+  }
+
+  .social-link {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+
+  .email-tooltip {
+    font-size: 12px;
+  }
+
+  /* Move name to top for mobile */
+  .center {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 1.8rem;
+    z-index: 10;
+  }
+
+  /* Remove the "Tap orbits to explore" text */
+  .center:after {
+    content: none;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Much smaller orbits for mobile phones */
+  .orbit1 {
+    width: 100px;
+    height: 100px;
+  }
+  .orbit2 {
     width: 200px;
+    height: 200px;
+  }
+  .orbit3 {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Update animation keyframes for mobile */
+  @keyframes orbit-rotate1 {
+    from {
+      transform: rotate(0deg) translateX(50px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(50px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-rotate2 {
+    from {
+      transform: rotate(0deg) translateX(100px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(100px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-rotate3 {
+    from {
+      transform: rotate(0deg) translateX(150px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(150px) rotate(-360deg);
+    }
+  }
+
+  /* Center name adjustments */
+  .center {
+    top: 60px;
+    font-size: 1.6rem;
+  }
+
+  /* Make dots more visible on small screens */
+  .dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Orbit names more visible */
+  .orbit-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* Reposition info box */
+  .info-box {
+    position: fixed;
+    bottom: -200px;
+    left: 0;
+    right: 0;
+    top: auto;
+    transform: none;
+    width: auto;
+    margin: 0 10px 10px 10px;
+    border-radius: 10px;
+    z-index: 100;
+    max-height: 35vh;
+    overflow-y: auto;
+  }
+
+  .info-box.show {
+    right: 0;
+    bottom: 10px;
+  }
+
+  /* Add padding for content */
+  body {
+    padding-bottom: 150px;
+  }
+}
+
+/* Extra small screens like small smartphones */
+@media (max-width: 360px) {
+  .orbit1 {
+    width: 80px;
+    height: 80px;
+  }
+  .orbit2 {
+    width: 160px;
+    height: 160px;
+  }
+  .orbit3 {
+    width: 240px;
+    height: 240px;
+  }
+
+  /* Update animation keyframes for very small screens */
+  @keyframes orbit-rotate1 {
+    from {
+      transform: rotate(0deg) translateX(40px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(40px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-rotate2 {
+    from {
+      transform: rotate(0deg) translateX(80px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(80px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-rotate3 {
+    from {
+      transform: rotate(0deg) translateX(120px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(120px) rotate(-360deg);
+    }
+  }
+
+  /* Further adjustments for tiny screens */
+  .center {
+    top: 40px;
+    font-size: 1.4rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Improve info box for very small screens */
+  .info-box {
+    max-height: 45vh;
     padding: 15px;
   }
 
-  .instruction-step .icon {
-    font-size: 20px;
+  .info-box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
   }
 
-  .instruction-step p {
-    font-size: 12px;
+  .info-box p {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+}
+
+/* Mobile-optimized info box */
+@media (max-width: 768px) {
+  .info-box {
+    position: fixed;
+    bottom: -200px;
+    left: 0;
+    right: 0;
+    top: auto;
+    transform: none;
+    width: auto;
+    margin: 0 20px 20px 20px;
+    border-radius: 15px;
+    z-index: 100;
+    max-height: 35vh;
+    overflow-y: auto;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform: translateY(100%);
+    opacity: 0;
+    background: rgba(30, 30, 40, 0.85);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .info-box.show {
+    bottom: 20px;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Improved typography for mobile info box */
+  .info-box h3 {
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+  }
+
+  .info-box p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Add a subtle indicator to show the box can be swiped */
+  .info-box:before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  /* Add subtle highlight on orbit when active */
+  .orbit.active {
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  /* Subtle pulse animation for active orbit */
+  @keyframes orbitPulse {
+    0% {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+    100% {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .orbit.active {
+    animation: orbitPulse 2s infinite;
+  }
+}
+
+/* Smaller screens need more compact info box */
+@media (max-width: 480px) {
+  .info-box {
+    margin: 0 15px 15px 15px;
+    padding: 20px 15px 15px 15px;
+  }
+
+  .info-box h3 {
+    font-size: 1.1rem;
+  }
+
+  .info-box p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+}
+
+/* Social links - Updated position to top left */
+.social-links-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: row; /* Changed to row for horizontal layout */
+  gap: 10px;
+}
+
+/* Adjust tooltip position for horizontal layout */
+.email-tooltip {
+  position: absolute;
+  left: 0;
+  top: 38px; /* Position below the button */
+  transform: translateY(0);
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  border-radius: 4px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.email-link-wrapper:hover .email-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Adjust for mobile screens */
+@media (max-width: 768px) {
+  .social-links-container {
+    top: 15px;
+    left: 15px;
+    gap: 8px;
+  }
+
+  /* Adjust position when theme toggle is also in the corner */
+  #theme-toggle {
+    top: 20px;
+    right: 20px; /* Keep on the right side */
+  }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+  .social-links-container {
+    top: 10px;
+    left: 10px;
+  }
+
+  .social-link {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
   }
 }
