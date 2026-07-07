@@ -2,20 +2,30 @@
 const orbitInfo = {
   orbit1: {
     header: "Technical Skills",
-    body: "Web Development, JavaScript, React, Python, Data Analysis, Machine Learning, Full-Stack Development. Proficient in creating innovative, user-centric digital solutions.",
+    body: "<strong>Languages & Tools</strong><br>Python, Java, JavaScript, React.js, HTML, CSS, SQL, C, Figma<br><br><strong>Security & Cloud</strong><br>Cybersecurity, Cloud Security, Microsoft Entra ID, Azure Active Directory, Identity & Access Management (IAM), Conditional Access, Endpoint Security, Microsoft Intune, Data Loss Prevention (DLP), Microsoft Purview, Zero Trust, Hybrid Cloud<br><br><strong>AI Productivity</strong><br>OpenAI ChatGPT, Claude, Google Gemini, GitHub Copilot",
   },
   orbit2: {
     header: "Professional Experience",
-    body: "Diverse background in software engineering and data science. Worked on impactful projects spanning multiple industries, demonstrating strong problem-solving and collaborative skills. Expertise in developing scalable web applications and data-driven solutions.",
+    body: "<strong>Delivery Engineer, Noventiq Malaysia</strong> (Dec 2025–Present) — Intune endpoint management & security baselines.<br><br><strong>Cybersecurity Engineer, Kloudynet Technologies</strong> (Dec 2024–Nov 2025) — Purview DLP, Entra ID admin, Conditional Access/Zero Trust.<br><br><strong>Faculty of Engineering, University of Auckland</strong> (Dec 2022–Jul 2024) — Professional casual staff.<br><br><strong>Marketing Associate, Gain Secure</strong> (Mar–Jun 2022) — Windows Server → Azure SQL migration.<br><br><strong>Enfrasys Consulting</strong> (Mar 2020–Feb 2021) — Cloud integration consulting.",
   },
   orbit3: {
     header: "Education",
-    body: "Bachelor's degree in Computer Science from the University of Auckland with a background on Artificial Intelligence, Machine Learning and Software Development. Continuous learner committed to professional development, staying updated with emerging technologies and industry trends.",
+    body: "<strong>Bachelor of Science, University of Auckland</strong><br>Major: Computer Science (AI & ML)<br>Module: Software Development<br><br><strong>American Degree Transfer Programme, Sunway University</strong><br>Major: Computer Science<br><br>Continuous learner committed to staying current with emerging technologies and industry trends.",
+  },
+  orbit4: {
+    header: "Certifications",
+    body: "<strong>Microsoft Certified</strong><br><br>AZ-900: Azure Fundamentals<br>DP-900: Azure Data Fundamentals<br>SC-900: Security Fundamentals<br>MD-102: Endpoint Administrator Associate<br>SC-300: Identity and Access Administrator Associate",
+  },
+  orbit5: {
+    header: "Projects",
+    body: '<strong><a href="https://github.com/garethltm/this-project-is-in-jeopardy-v2" target="_blank">UMSA Jeopardy Game</a></strong> — Malaysian-themed full-stack trivia game<br><br><strong><a href="https://github.com/uoa-compsci399-s1-2024/capstone-project-2024-s1-team-5-pollination" target="_blank">AAPC Website</a></strong> — Project Manager & full-stack developer for an external client<br><br><strong><a href="https://github.com/garethltm/235project" target="_blank">Game Library</a></strong> — Team full-stack project<br><br><strong><a href="https://github.com/garethltm/victoryroyale" target="_blank">Victory Royale</a></strong> — Front-end build, 2023 SESA Hackathon<br><br><strong><a href="https://scheap.vercel.app" target="_blank">Scheap</a></strong> — Wishlist/shopping price tracker (in development)<br><br><strong><a href="https://github.com/garethltm/website" target="_blank">Portfolio Website</a></strong> — This interactive site',
   },
 };
 
 // Orbit sizes will be set dynamically
 const orbitSizes = {
+  orbit5: 0,
+  orbit4: 0,
   orbit3: 0,
   orbit2: 0,
   orbit1: 0,
@@ -27,16 +37,28 @@ function updateOrbitSizes() {
   const orbit1Element = document.querySelector(".orbit1");
   const orbit2Element = document.querySelector(".orbit2");
   const orbit3Element = document.querySelector(".orbit3");
+  const orbit4Element = document.querySelector(".orbit4");
+  const orbit5Element = document.querySelector(".orbit5");
 
-  if (orbit1Element && orbit2Element && orbit3Element) {
+  if (
+    orbit1Element &&
+    orbit2Element &&
+    orbit3Element &&
+    orbit4Element &&
+    orbit5Element
+  ) {
     const orbit1Rect = orbit1Element.getBoundingClientRect();
     const orbit2Rect = orbit2Element.getBoundingClientRect();
     const orbit3Rect = orbit3Element.getBoundingClientRect();
+    const orbit4Rect = orbit4Element.getBoundingClientRect();
+    const orbit5Rect = orbit5Element.getBoundingClientRect();
 
     // Set sizes based on the actual rendered elements (half the width is the radius)
     orbitSizes.orbit1 = orbit1Rect.width / 2;
     orbitSizes.orbit2 = orbit2Rect.width / 2;
     orbitSizes.orbit3 = orbit3Rect.width / 2;
+    orbitSizes.orbit4 = orbit4Rect.width / 2;
+    orbitSizes.orbit5 = orbit5Rect.width / 2;
 
     console.log("Updated orbit sizes:", orbitSizes);
   }
@@ -100,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function determineActiveOrbit(distanceFromCenter) {
       // Sort orbit sizes from largest to smallest
       const sortedOrbits = Object.keys(orbitSizes).sort(
-        (a, b) => orbitSizes[b] - orbitSizes[a]
+        (a, b) => orbitSizes[b] - orbitSizes[a],
       );
 
       // Find the smallest orbit that contains the point
@@ -140,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const distanceFromCenter = Math.sqrt(
         Math.pow(event.clientX - center.x, 2) +
-          Math.pow(event.clientY - center.y, 2)
+          Math.pow(event.clientY - center.y, 2),
       );
 
       console.log("Click distance from center:", distanceFromCenter);
@@ -169,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const distanceFromCenter = Math.sqrt(
         Math.pow(event.clientX - center.x, 2) +
-          Math.pow(event.clientY - center.y, 2)
+          Math.pow(event.clientY - center.y, 2),
       );
 
       const activeOrbit = determineActiveOrbit(distanceFromCenter);
@@ -333,7 +355,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const distanceFromCenter = Math.sqrt(
         Math.pow(touch.clientX - center.x, 2) +
-          Math.pow(touch.clientY - center.y, 2)
+          Math.pow(touch.clientY - center.y, 2),
       );
 
       // Find which orbit was touched
@@ -344,6 +366,10 @@ document.addEventListener("DOMContentLoaded", function () {
         activeOrbit = "orbit2";
       } else if (distanceFromCenter <= orbitSizes.orbit3) {
         activeOrbit = "orbit3";
+      } else if (distanceFromCenter <= orbitSizes.orbit4) {
+        activeOrbit = "orbit4";
+      } else if (distanceFromCenter <= orbitSizes.orbit5) {
+        activeOrbit = "orbit5";
       }
 
       if (activeOrbit) {
@@ -482,19 +508,22 @@ document.addEventListener("DOMContentLoaded", function () {
       // Insert after the orbit container
       orbitContainer.parentNode.insertBefore(
         touchIndicator,
-        orbitContainer.nextSibling
+        orbitContainer.nextSibling,
       );
     }
 
     // Add orbital highlighting animation to draw attention
     const orbits = document.querySelectorAll(".orbit");
     orbits.forEach((orbit, index) => {
-      setTimeout(() => {
-        orbit.classList.add("highlight");
-        setTimeout(() => {
-          orbit.classList.remove("highlight");
-        }, 800);
-      }, 2500 + index * 300);
+      setTimeout(
+        () => {
+          orbit.classList.add("highlight");
+          setTimeout(() => {
+            orbit.classList.remove("highlight");
+          }, 800);
+        },
+        2500 + index * 300,
+      );
     });
 
     // Add CSS for permanent touch indicator
@@ -508,8 +537,8 @@ document.addEventListener("DOMContentLoaded", function () {
       style.id = "touch-indicator-styles";
       style.textContent = `
         .permanent-touch-indicator {
-          position: relative; /* Changed from absolute to relative */
-          margin-top: 550px; /* Add margin to position below orbit */
+          position: absolute;
+          top: calc(50% + clamp(200px, 45vmin, 550px) + 40px);
           left: 50%;
           transform: translateX(-50%);
           background: rgba(255, 255, 255, 0.3);
@@ -520,7 +549,7 @@ document.addEventListener("DOMContentLoaded", function () {
           z-index: 10;
           text-align: center;
           white-space: nowrap;
-          display: inline-block; /* To maintain proper centering */
+          display: inline-block;
         }
         
         .permanent-touch-indicator span {
