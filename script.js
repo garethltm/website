@@ -308,6 +308,11 @@ document.addEventListener("DOMContentLoaded", function () {
         infoBox.innerHTML = `<h3>${header}</h3><p>${body}</p>`;
         infoBox.classList.add("show");
 
+        // Once the person has successfully tapped an orbit, the "tap to
+        // explore" hint has done its job — fade it out and remove it so
+        // it doesn't linger or reappear.
+        dismissTouchIndicator();
+
         // Remove active class from previous orbit if exists
         if (activeOrbitElement) {
           activeOrbitElement.classList.remove("active");
@@ -496,6 +501,18 @@ document.addEventListener("DOMContentLoaded", function () {
     document.head.appendChild(style);
   }
 
+  // Fade out and remove the permanent "tap the orbital rings" hint once
+  // it's no longer needed (the person has found and tapped a ring).
+  function dismissTouchIndicator() {
+    const touchIndicator = document.querySelector(".permanent-touch-indicator");
+    if (touchIndicator && !touchIndicator.classList.contains("fade-out")) {
+      touchIndicator.classList.add("fade-out");
+      setTimeout(() => {
+        touchIndicator.remove();
+      }, 400);
+    }
+  }
+
   function addTouchVisualIndicators() {
     // Create a permanent indicator to be placed below the orbit
     const touchIndicator = document.createElement("div");
@@ -597,6 +614,12 @@ document.addEventListener("DOMContentLoaded", function () {
         
         .permanent-touch-indicator {
           animation: fadeInPulse 0.6s ease-out forwards;
+          transition: opacity 0.4s ease;
+        }
+
+        .permanent-touch-indicator.fade-out {
+          opacity: 0;
+          pointer-events: none;
         }
       `;
       document.head.appendChild(style);
