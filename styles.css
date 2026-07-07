@@ -312,7 +312,7 @@ body::before {
 
 .orbit-name {
   position: absolute;
-  top: -28px;
+  top: -30px;
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
@@ -320,6 +320,17 @@ body::before {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-muted);
+  /* Sits above the rotating dot in its own stacking context so the dot
+     never visually cuts through the label as it sweeps past the top of
+     the ring. The small pill background keeps it legible over the ring
+     line, radar sweep, and any dot passing underneath. */
+  z-index: 3;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .orbit {
@@ -397,6 +408,7 @@ body::before {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 2;
   transform: translate(-50%, -50%);
   transition: transform 0.3s ease;
   animation: dotPulse 2.4s ease-in-out infinite;
@@ -741,20 +753,109 @@ body::before {
 
   .center {
     top: 90px;
+    width: 100%;
+    padding: 0 20px;
   }
 
   .center h2 {
     font-size: 1.8rem;
   }
+
+  .role-tag {
+    white-space: normal;
+    text-align: center;
+    max-width: 280px;
+  }
+
+  /* Shrink the whole orbit system on mobile so the innermost ring has
+     real clearance below the name badge, and the outermost ring stays
+     comfortably inside the viewport instead of grazing the screen edges. */
+  .orbit1 {
+    width: min(14vmin, 150px);
+    height: min(14vmin, 150px);
+  }
+  .orbit2 {
+    width: min(26vmin, 280px);
+    height: min(26vmin, 280px);
+  }
+  .orbit3 {
+    width: min(38vmin, 410px);
+    height: min(38vmin, 410px);
+  }
+  .orbit4 {
+    width: min(50vmin, 540px);
+    height: min(50vmin, 540px);
+  }
+  .orbit5 {
+    width: min(62vmin, 670px);
+    height: min(62vmin, 670px);
+  }
+
+  @keyframes orbit-rotate1 {
+    from {
+      transform: rotate(0deg) translateX(min(7vmin, 75px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(7vmin, 75px)) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-rotate2 {
+    from {
+      transform: rotate(0deg) translateX(min(13vmin, 140px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(13vmin, 140px)) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-rotate3 {
+    from {
+      transform: rotate(0deg) translateX(min(19vmin, 205px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(19vmin, 205px)) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-rotate4 {
+    from {
+      transform: rotate(0deg) translateX(min(25vmin, 270px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(25vmin, 270px)) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-rotate5 {
+    from {
+      transform: rotate(0deg) translateX(min(31vmin, 335px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(31vmin, 335px)) rotate(-360deg);
+    }
+  }
+
+  .orbit-container::before {
+    width: min(62vmin, 670px);
+    height: min(62vmin, 670px);
+  }
+
+  .orbit-name {
+    top: -26px;
+    font-size: 0.64rem;
+    padding: 2.5px 8px;
+    letter-spacing: 1.1px;
+  }
 }
 
 @media (max-width: 480px) {
   .center {
-    top: 65px;
+    top: 60px;
   }
 
   .center h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+  }
+
+  .role-tag {
+    font-size: 0.68rem;
   }
 
   .dot {
@@ -763,7 +864,79 @@ body::before {
   }
 
   .orbit-name {
-    font-size: 0.62rem;
+    font-size: 0.58rem;
+    top: -24px;
+    padding: 2px 7px;
+    letter-spacing: 0.8px;
+  }
+
+  /* One more size step down so the outer rings (Certifications, Projects)
+     never approach the social icons or the bottom edge on smaller phones. */
+  .orbit1 {
+    width: min(12vmin, 110px);
+    height: min(12vmin, 110px);
+  }
+  .orbit2 {
+    width: min(22vmin, 205px);
+    height: min(22vmin, 205px);
+  }
+  .orbit3 {
+    width: min(32vmin, 300px);
+    height: min(32vmin, 300px);
+  }
+  .orbit4 {
+    width: min(42vmin, 395px);
+    height: min(42vmin, 395px);
+  }
+  .orbit5 {
+    width: min(52vmin, 490px);
+    height: min(52vmin, 490px);
+  }
+
+  @keyframes orbit-rotate1 {
+    from {
+      transform: rotate(0deg) translateX(min(6vmin, 55px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(6vmin, 55px)) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-rotate2 {
+    from {
+      transform: rotate(0deg) translateX(min(11vmin, 102px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(11vmin, 102px)) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-rotate3 {
+    from {
+      transform: rotate(0deg) translateX(min(16vmin, 150px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(16vmin, 150px)) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-rotate4 {
+    from {
+      transform: rotate(0deg) translateX(min(21vmin, 197px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(21vmin, 197px)) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-rotate5 {
+    from {
+      transform: rotate(0deg) translateX(min(26vmin, 245px)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(min(26vmin, 245px)) rotate(-360deg);
+    }
+  }
+
+  .orbit-container::before {
+    width: min(52vmin, 490px);
+    height: min(52vmin, 490px);
   }
 
   .info-box {
@@ -790,11 +963,11 @@ body::before {
 
 @media (max-width: 360px) {
   .center {
-    top: 45px;
+    top: 42px;
   }
 
   .center h2 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   .social-links-container {
@@ -806,5 +979,41 @@ body::before {
     width: 30px;
     height: 30px;
     font-size: 14px;
+  }
+}
+
+/* Short viewports (landscape phones) — the fixed vmin-based rings can
+   outgrow the available height here since vmin tracks whichever
+   dimension is smaller. Rather than let the outer rings clip or overlap
+   fixed UI, let the page scroll so everything stays reachable. */
+@media (max-height: 500px) and (max-width: 900px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .orbit5 {
+    width: min(62vmin, 78vh);
+    height: min(62vmin, 78vh);
+  }
+  .orbit4 {
+    width: min(50vmin, 63vh);
+    height: min(50vmin, 63vh);
+  }
+  .orbit3 {
+    width: min(38vmin, 48vh);
+    height: min(38vmin, 48vh);
+  }
+  .orbit2 {
+    width: min(26vmin, 33vh);
+    height: min(26vmin, 33vh);
+  }
+  .orbit1 {
+    width: min(14vmin, 18vh);
+    height: min(14vmin, 18vh);
+  }
+
+  .orbit-container::before {
+    width: min(62vmin, 78vh);
+    height: min(62vmin, 78vh);
   }
 }
