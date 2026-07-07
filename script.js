@@ -567,7 +567,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .permanent-touch-indicator {
             font-size: 0.8rem;
             padding: 5px 12px;
-            top: calc(50% + min(31vmin, 335px) + 24px);
+            top: calc(50% + min(42vmin, 447px) + 24px);
           }
         }
 
@@ -575,7 +575,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .permanent-touch-indicator {
             font-size: 0.72rem;
             padding: 4px 10px;
-            top: calc(50% + min(26vmin, 245px) + 18px);
+            top: calc(50% + min(36vmin, 336px) + 18px);
           }
         }
         

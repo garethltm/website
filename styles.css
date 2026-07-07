@@ -757,6 +757,20 @@ body::before {
     padding: 0 20px;
   }
 
+  /* Reorder so "Available for opportunities" reads as a caption below the
+     name/title, rather than floating above them. */
+  .center h2 {
+    order: 1;
+  }
+
+  .role-tag {
+    order: 2;
+  }
+
+  .status-tag {
+    order: 3;
+  }
+
   .center h2 {
     font-size: 1.8rem;
   }
@@ -767,74 +781,73 @@ body::before {
     max-width: 280px;
   }
 
-  /* Shrink the whole orbit system on mobile so the innermost ring has
-     real clearance below the name badge, and the outermost ring stays
-     comfortably inside the viewport instead of grazing the screen edges. */
+  /* Orbit system sized generously on mobile — big enough to feel like the
+     centerpiece, while still leaving clearance below the name badge. */
   .orbit1 {
-    width: min(14vmin, 150px);
-    height: min(14vmin, 150px);
+    width: min(20vmin, 210px);
+    height: min(20vmin, 210px);
   }
   .orbit2 {
-    width: min(26vmin, 280px);
-    height: min(26vmin, 280px);
+    width: min(37vmin, 390px);
+    height: min(37vmin, 390px);
   }
   .orbit3 {
-    width: min(38vmin, 410px);
-    height: min(38vmin, 410px);
+    width: min(53vmin, 560px);
+    height: min(53vmin, 560px);
   }
   .orbit4 {
-    width: min(50vmin, 540px);
-    height: min(50vmin, 540px);
+    width: min(69vmin, 730px);
+    height: min(69vmin, 730px);
   }
   .orbit5 {
-    width: min(62vmin, 670px);
-    height: min(62vmin, 670px);
+    width: min(84vmin, 895px);
+    height: min(84vmin, 895px);
   }
 
   @keyframes orbit-rotate1 {
     from {
-      transform: rotate(0deg) translateX(min(7vmin, 75px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(10vmin, 105px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(7vmin, 75px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(10vmin, 105px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate2 {
     from {
-      transform: rotate(0deg) translateX(min(13vmin, 140px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(18.5vmin, 195px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(13vmin, 140px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(18.5vmin, 195px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate3 {
     from {
-      transform: rotate(0deg) translateX(min(19vmin, 205px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(26.5vmin, 280px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(19vmin, 205px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(26.5vmin, 280px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate4 {
     from {
-      transform: rotate(0deg) translateX(min(25vmin, 270px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(34.5vmin, 365px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(25vmin, 270px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(34.5vmin, 365px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate5 {
     from {
-      transform: rotate(0deg) translateX(min(31vmin, 335px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(42vmin, 447px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(31vmin, 335px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(42vmin, 447px)) rotate(-360deg);
     }
   }
 
   .orbit-container::before {
-    width: min(62vmin, 670px);
-    height: min(62vmin, 670px);
+    width: min(84vmin, 895px);
+    height: min(84vmin, 895px);
   }
 
   .orbit-name {
@@ -870,73 +883,74 @@ body::before {
     letter-spacing: 0.8px;
   }
 
-  /* One more size step down so the outer rings (Certifications, Projects)
-     never approach the social icons or the bottom edge on smaller phones. */
+  /* One more size step down (but still generous) so the outer rings
+     (Certifications, Projects) stay clear of the social icons and bottom
+     edge on smaller phones. */
   .orbit1 {
-    width: min(12vmin, 110px);
-    height: min(12vmin, 110px);
+    width: min(17vmin, 154px);
+    height: min(17vmin, 154px);
   }
   .orbit2 {
-    width: min(22vmin, 205px);
-    height: min(22vmin, 205px);
+    width: min(31vmin, 285px);
+    height: min(31vmin, 285px);
   }
   .orbit3 {
-    width: min(32vmin, 300px);
-    height: min(32vmin, 300px);
+    width: min(44vmin, 416px);
+    height: min(44vmin, 416px);
   }
   .orbit4 {
-    width: min(42vmin, 395px);
-    height: min(42vmin, 395px);
+    width: min(58vmin, 547px);
+    height: min(58vmin, 547px);
   }
   .orbit5 {
-    width: min(52vmin, 490px);
-    height: min(52vmin, 490px);
+    width: min(72vmin, 673px);
+    height: min(72vmin, 673px);
   }
 
   @keyframes orbit-rotate1 {
     from {
-      transform: rotate(0deg) translateX(min(6vmin, 55px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(8.5vmin, 77px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(6vmin, 55px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(8.5vmin, 77px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate2 {
     from {
-      transform: rotate(0deg) translateX(min(11vmin, 102px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(15.5vmin, 142px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(11vmin, 102px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(15.5vmin, 142px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate3 {
     from {
-      transform: rotate(0deg) translateX(min(16vmin, 150px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(22vmin, 208px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(16vmin, 150px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(22vmin, 208px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate4 {
     from {
-      transform: rotate(0deg) translateX(min(21vmin, 197px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(29vmin, 273px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(21vmin, 197px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(29vmin, 273px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate5 {
     from {
-      transform: rotate(0deg) translateX(min(26vmin, 245px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(36vmin, 336px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(26vmin, 245px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(36vmin, 336px)) rotate(-360deg);
     }
   }
 
   .orbit-container::before {
-    width: min(52vmin, 490px);
-    height: min(52vmin, 490px);
+    width: min(72vmin, 673px);
+    height: min(72vmin, 673px);
   }
 
   .info-box {
@@ -992,28 +1006,28 @@ body::before {
   }
 
   .orbit5 {
-    width: min(62vmin, 78vh);
-    height: min(62vmin, 78vh);
+    width: min(84vmin, 95vh);
+    height: min(84vmin, 95vh);
   }
   .orbit4 {
-    width: min(50vmin, 63vh);
-    height: min(50vmin, 63vh);
+    width: min(69vmin, 87vh);
+    height: min(69vmin, 87vh);
   }
   .orbit3 {
-    width: min(38vmin, 48vh);
-    height: min(38vmin, 48vh);
+    width: min(53vmin, 66vh);
+    height: min(53vmin, 66vh);
   }
   .orbit2 {
-    width: min(26vmin, 33vh);
-    height: min(26vmin, 33vh);
+    width: min(37vmin, 47vh);
+    height: min(37vmin, 47vh);
   }
   .orbit1 {
-    width: min(14vmin, 18vh);
-    height: min(14vmin, 18vh);
+    width: min(20vmin, 25vh);
+    height: min(20vmin, 25vh);
   }
 
   .orbit-container::before {
-    width: min(62vmin, 78vh);
-    height: min(62vmin, 78vh);
+    width: min(84vmin, 95vh);
+    height: min(84vmin, 95vh);
   }
 }
