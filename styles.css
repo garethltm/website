@@ -752,9 +752,15 @@ body::before {
   }
 
   .center {
-    top: 90px;
+    top: 115px;
     width: 100%;
     padding: 0 20px;
+  }
+
+  /* Bigger dots on touch devices so they're easier to tap accurately. */
+  .dot {
+    width: 16px;
+    height: 16px;
   }
 
   /* Reorder so "Available for opportunities" reads as a caption below the
@@ -784,70 +790,70 @@ body::before {
   /* Orbit system sized generously on mobile — big enough to feel like the
      centerpiece, while still leaving clearance below the name badge. */
   .orbit1 {
-    width: min(20vmin, 210px);
-    height: min(20vmin, 210px);
+    width: min(22vmin, 230px);
+    height: min(22vmin, 230px);
   }
   .orbit2 {
-    width: min(37vmin, 390px);
-    height: min(37vmin, 390px);
+    width: min(40vmin, 425px);
+    height: min(40vmin, 425px);
   }
   .orbit3 {
-    width: min(53vmin, 560px);
-    height: min(53vmin, 560px);
+    width: min(57vmin, 610px);
+    height: min(57vmin, 610px);
   }
   .orbit4 {
-    width: min(69vmin, 730px);
-    height: min(69vmin, 730px);
+    width: min(74vmin, 790px);
+    height: min(74vmin, 790px);
   }
   .orbit5 {
-    width: min(84vmin, 895px);
-    height: min(84vmin, 895px);
+    width: min(90vmin, 965px);
+    height: min(90vmin, 965px);
   }
 
   @keyframes orbit-rotate1 {
     from {
-      transform: rotate(0deg) translateX(min(10vmin, 105px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(11vmin, 115px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(10vmin, 105px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(11vmin, 115px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate2 {
     from {
-      transform: rotate(0deg) translateX(min(18.5vmin, 195px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(20vmin, 212px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(18.5vmin, 195px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(20vmin, 212px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate3 {
     from {
-      transform: rotate(0deg) translateX(min(26.5vmin, 280px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(28.5vmin, 305px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(26.5vmin, 280px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(28.5vmin, 305px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate4 {
     from {
-      transform: rotate(0deg) translateX(min(34.5vmin, 365px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(37vmin, 395px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(34.5vmin, 365px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(37vmin, 395px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate5 {
     from {
-      transform: rotate(0deg) translateX(min(42vmin, 447px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(45vmin, 482px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(42vmin, 447px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(45vmin, 482px)) rotate(-360deg);
     }
   }
 
   .orbit-container::before {
-    width: min(84vmin, 895px);
-    height: min(84vmin, 895px);
+    width: min(90vmin, 965px);
+    height: min(90vmin, 965px);
   }
 
   .orbit-name {
@@ -860,7 +866,7 @@ body::before {
 
 @media (max-width: 480px) {
   .center {
-    top: 60px;
+    top: 85px;
   }
 
   .center h2 {
@@ -872,8 +878,8 @@ body::before {
   }
 
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
   }
 
   .orbit-name {
@@ -887,70 +893,70 @@ body::before {
      (Certifications, Projects) stay clear of the social icons and bottom
      edge on smaller phones. */
   .orbit1 {
-    width: min(17vmin, 154px);
-    height: min(17vmin, 154px);
+    width: min(19vmin, 169px);
+    height: min(19vmin, 169px);
   }
   .orbit2 {
-    width: min(31vmin, 285px);
-    height: min(31vmin, 285px);
+    width: min(34vmin, 314px);
+    height: min(34vmin, 314px);
   }
   .orbit3 {
-    width: min(44vmin, 416px);
-    height: min(44vmin, 416px);
+    width: min(48vmin, 458px);
+    height: min(48vmin, 458px);
   }
   .orbit4 {
-    width: min(58vmin, 547px);
-    height: min(58vmin, 547px);
+    width: min(64vmin, 602px);
+    height: min(64vmin, 602px);
   }
   .orbit5 {
-    width: min(72vmin, 673px);
-    height: min(72vmin, 673px);
+    width: min(79vmin, 740px);
+    height: min(79vmin, 740px);
   }
 
   @keyframes orbit-rotate1 {
     from {
-      transform: rotate(0deg) translateX(min(8.5vmin, 77px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(9.5vmin, 84px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(8.5vmin, 77px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(9.5vmin, 84px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate2 {
     from {
-      transform: rotate(0deg) translateX(min(15.5vmin, 142px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(17vmin, 157px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(15.5vmin, 142px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(17vmin, 157px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate3 {
     from {
-      transform: rotate(0deg) translateX(min(22vmin, 208px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(24vmin, 229px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(22vmin, 208px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(24vmin, 229px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate4 {
     from {
-      transform: rotate(0deg) translateX(min(29vmin, 273px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(32vmin, 301px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(29vmin, 273px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(32vmin, 301px)) rotate(-360deg);
     }
   }
   @keyframes orbit-rotate5 {
     from {
-      transform: rotate(0deg) translateX(min(36vmin, 336px)) rotate(0deg);
+      transform: rotate(0deg) translateX(min(39.5vmin, 370px)) rotate(0deg);
     }
     to {
-      transform: rotate(360deg) translateX(min(36vmin, 336px)) rotate(-360deg);
+      transform: rotate(360deg) translateX(min(39.5vmin, 370px)) rotate(-360deg);
     }
   }
 
   .orbit-container::before {
-    width: min(72vmin, 673px);
-    height: min(72vmin, 673px);
+    width: min(79vmin, 740px);
+    height: min(79vmin, 740px);
   }
 
   .info-box {
@@ -977,7 +983,7 @@ body::before {
 
 @media (max-width: 360px) {
   .center {
-    top: 42px;
+    top: 60px;
   }
 
   .center h2 {
