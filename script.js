@@ -538,7 +538,7 @@ document.addEventListener("DOMContentLoaded", function () {
       style.textContent = `
         .permanent-touch-indicator {
           position: absolute;
-          top: calc(50% + clamp(200px, 45vmin, 550px) + 40px);
+          top: calc(50% + min(45vmin, 550px) + 40px);
           left: 50%;
           transform: translateX(-50%);
           background: rgba(255, 255, 255, 0.3);

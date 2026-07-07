@@ -164,51 +164,46 @@ body::before {
    sizes below regardless of viewport width AND height. */
 @keyframes orbit-rotate1 {
   from {
-    transform: rotate(0deg) translateX(clamp(40px, 9vmin, 110px)) rotate(0deg);
+    transform: rotate(0deg) translateX(min(9vmin, 110px)) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) translateX(clamp(40px, 9vmin, 110px))
-      rotate(-360deg);
+    transform: rotate(360deg) translateX(min(9vmin, 110px)) rotate(-360deg);
   }
 }
 
 @keyframes orbit-rotate2 {
   from {
-    transform: rotate(0deg) translateX(clamp(80px, 18vmin, 220px)) rotate(0deg);
+    transform: rotate(0deg) translateX(min(18vmin, 220px)) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) translateX(clamp(80px, 18vmin, 220px))
-      rotate(-360deg);
+    transform: rotate(360deg) translateX(min(18vmin, 220px)) rotate(-360deg);
   }
 }
 
 @keyframes orbit-rotate3 {
   from {
-    transform: rotate(0deg) translateX(clamp(120px, 27vmin, 330px)) rotate(0deg);
+    transform: rotate(0deg) translateX(min(27vmin, 330px)) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) translateX(clamp(120px, 27vmin, 330px))
-      rotate(-360deg);
+    transform: rotate(360deg) translateX(min(27vmin, 330px)) rotate(-360deg);
   }
 }
 
 @keyframes orbit-rotate4 {
   from {
-    transform: rotate(0deg) translateX(clamp(160px, 36vmin, 440px)) rotate(0deg);
+    transform: rotate(0deg) translateX(min(36vmin, 440px)) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) translateX(clamp(160px, 36vmin, 440px))
-      rotate(-360deg);
+    transform: rotate(360deg) translateX(min(36vmin, 440px)) rotate(-360deg);
   }
 }
 
 @keyframes orbit-rotate5 {
   from {
-    transform: rotate(0deg) translateX(clamp(200px, 45vmin, 550px)) rotate(0deg);
+    transform: rotate(0deg) translateX(min(45vmin, 550px)) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) translateX(clamp(200px, 45vmin, 550px))
-      rotate(-360deg);
+    transform: rotate(360deg) translateX(min(45vmin, 550px)) rotate(-360deg);
   }
 }
 
@@ -299,8 +294,8 @@ body::before {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: clamp(400px, 90vmin, 1100px);
-  height: clamp(400px, 90vmin, 1100px);
+  width: min(90vmin, 1100px);
+  height: min(90vmin, 1100px);
   transform: translate(-50%, -50%);
   background: conic-gradient(
     from 0deg,
@@ -354,29 +349,32 @@ body::before {
 }
 
 /* Ring diameters scale off vmin (the smaller of viewport width/height),
-   with px floors/ceilings so they stay usable on tiny phones and don't
-   balloon past a sensible max on huge monitors. Because every ring uses
-   the same vmin multiplier ratio (2x/3x/4x/5x of orbit1), they all scale
-   together proportionally at any window size or aspect ratio. */
+   capped with a max so they don't balloon past a sensible size on huge
+   monitors. Deliberately NO min-px floor here: on a phone in portrait,
+   vmin equals the *width*, so any floor bigger than a phone is wide would
+   force the ring to overflow horizontally. min(Nvmin, maxPx) guarantees
+   the ring can never exceed the smaller viewport dimension. Because every
+   ring uses the same vmin multiplier ratio (2x/3x/4x/5x of orbit1), they
+   all scale together proportionally at any window size or aspect ratio. */
 .orbit1 {
-  width: clamp(80px, 18vmin, 220px);
-  height: clamp(80px, 18vmin, 220px);
+  width: min(18vmin, 220px);
+  height: min(18vmin, 220px);
 }
 .orbit2 {
-  width: clamp(160px, 36vmin, 440px);
-  height: clamp(160px, 36vmin, 440px);
+  width: min(36vmin, 440px);
+  height: min(36vmin, 440px);
 }
 .orbit3 {
-  width: clamp(240px, 54vmin, 660px);
-  height: clamp(240px, 54vmin, 660px);
+  width: min(54vmin, 660px);
+  height: min(54vmin, 660px);
 }
 .orbit4 {
-  width: clamp(320px, 72vmin, 880px);
-  height: clamp(320px, 72vmin, 880px);
+  width: min(72vmin, 880px);
+  height: min(72vmin, 880px);
 }
 .orbit5 {
-  width: clamp(400px, 90vmin, 1100px);
-  height: clamp(400px, 90vmin, 1100px);
+  width: min(90vmin, 1100px);
+  height: min(90vmin, 1100px);
 }
 
 .orbit.highlight,
