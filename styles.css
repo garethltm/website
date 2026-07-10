@@ -22,6 +22,7 @@
   --panel-bg: rgba(14, 22, 40, 0.82);
   --panel-border: rgba(140, 170, 210, 0.14);
   --panel-blur: 14px;
+  --info-box-fade: linear-gradient(to top, rgba(14, 22, 40, 0.95), transparent);
 
   --dot-color: var(--accent-cyan);
   --orbit-border: rgba(140, 170, 210, 0.28);
@@ -49,6 +50,11 @@
 
   --panel-bg: rgba(255, 255, 255, 0.82);
   --panel-border: rgba(16, 27, 48, 0.1);
+  --info-box-fade: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.95),
+    transparent
+  );
 
   --dot-color: var(--accent-cyan);
   --orbit-border: rgba(16, 27, 48, 0.16);
@@ -757,6 +763,10 @@ body::before {
     padding: 0 20px;
   }
 
+  .orbit-container {
+    top: 54%;
+  }
+
   /* Bigger dots on touch devices so they're easier to tap accurately. */
   .dot {
     width: 16px;
@@ -790,24 +800,24 @@ body::before {
   /* Orbit system sized generously on mobile — big enough to feel like the
      centerpiece, while still leaving clearance below the name badge. */
   .orbit1 {
-    width: min(22vmin, 230px);
-    height: min(22vmin, 230px);
+    width: min(20vmin, 210px);
+    height: min(20vmin, 210px);
   }
   .orbit2 {
-    width: min(40vmin, 425px);
-    height: min(40vmin, 425px);
+    width: min(36vmin, 385px);
+    height: min(36vmin, 385px);
   }
   .orbit3 {
-    width: min(57vmin, 610px);
-    height: min(57vmin, 610px);
+    width: min(52vmin, 560px);
+    height: min(52vmin, 560px);
   }
   .orbit4 {
-    width: min(74vmin, 790px);
-    height: min(74vmin, 790px);
+    width: min(68vmin, 730px);
+    height: min(68vmin, 730px);
   }
   .orbit5 {
-    width: min(90vmin, 965px);
-    height: min(90vmin, 965px);
+    width: min(84vmin, 900px);
+    height: min(84vmin, 900px);
   }
 
   @keyframes orbit-rotate1 {
@@ -852,8 +862,8 @@ body::before {
   }
 
   .orbit-container::before {
-    width: min(90vmin, 965px);
-    height: min(90vmin, 965px);
+    width: min(84vmin, 900px);
+    height: min(84vmin, 900px);
   }
 
   .orbit-name {
@@ -893,24 +903,24 @@ body::before {
      (Certifications, Projects) stay clear of the social icons and bottom
      edge on smaller phones. */
   .orbit1 {
-    width: min(19vmin, 169px);
-    height: min(19vmin, 169px);
+    width: min(17vmin, 152px);
+    height: min(17vmin, 152px);
   }
   .orbit2 {
-    width: min(34vmin, 314px);
-    height: min(34vmin, 314px);
+    width: min(31vmin, 286px);
+    height: min(31vmin, 286px);
   }
   .orbit3 {
-    width: min(48vmin, 458px);
-    height: min(48vmin, 458px);
+    width: min(44vmin, 418px);
+    height: min(44vmin, 418px);
   }
   .orbit4 {
-    width: min(64vmin, 602px);
-    height: min(64vmin, 602px);
+    width: min(59vmin, 552px);
+    height: min(59vmin, 552px);
   }
   .orbit5 {
-    width: min(79vmin, 740px);
-    height: min(79vmin, 740px);
+    width: min(73vmin, 684px);
+    height: min(73vmin, 684px);
   }
 
   @keyframes orbit-rotate1 {
@@ -955,8 +965,8 @@ body::before {
   }
 
   .orbit-container::before {
-    width: min(79vmin, 740px);
-    height: min(79vmin, 740px);
+    width: min(73vmin, 684px);
+    height: min(73vmin, 684px);
   }
 
   .info-box {

@@ -490,9 +490,9 @@ document.addEventListener("DOMContentLoaded", function () {
           left: 0;
           right: 0;
           height: 20px;
-          background: linear-gradient(to top, rgba(30, 30, 40, 0.8), transparent);
+          background: var(--info-box-fade);
           pointer-events: none;
-          opacity: 0.8;
+          opacity: 0.95;
           border-bottom-left-radius: 15px;
           border-bottom-right-radius: 15px;
         }
