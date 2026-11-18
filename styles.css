@@ -492,14 +492,31 @@ h2 {
 }
 
 .expand-icon {
+  position: relative;
   width: 22px;
   height: 22px;
-  display: grid;
-  place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
-  font-size: 1rem;
+  font-size: 0;
+  line-height: 1;
   transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.expand-icon::before,
+.expand-icon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 1px;
+  border-radius: 1px;
+  background: currentColor;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.expand-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .experience-entry[open] .expand-icon {

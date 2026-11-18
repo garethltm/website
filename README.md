@@ -9,7 +9,8 @@ Edit [`portfolio-data.js`](./portfolio-data.js) to update the homepage copy, Lin
 Project entries support:
 
 - `name`, `category`, and `description`
-- optional `url` for a public project page
+- optional `url` for a live project page
+- optional `repoUrl` for a public source-code repository
 - `role` for the interactive “My part in it” disclosure
 - `accent`, `mark`, and `filter` for the project card and category filters
 

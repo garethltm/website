@@ -55,7 +55,9 @@ function renderExperience() {
     summary.append(title);
     summary.append(makeElement("span", "experience-category", experience.category));
     summary.append(makeElement("span", "experience-dates", experience.dates));
-    summary.append(makeElement("span", "expand-icon", "+"));
+    const expandIcon = makeElement("span", "expand-icon");
+    expandIcon.setAttribute("aria-hidden", "true");
+    summary.append(expandIcon);
     details.append(summary);
 
     const content = makeElement("div", "experience-content");
@@ -111,9 +113,14 @@ function renderProjects() {
     copy.append(makeElement("h3", "", project.name));
     copy.append(makeElement("p", "project-description", project.description));
 
+    const projectLinks = makeElement("div", "project-links");
     if (project.url) {
-      copy.append(makeLink("Visit project ↗", project.url, "text-link"));
+      projectLinks.append(makeLink("Visit project ↗", project.url, "text-link"));
     }
+    if (project.repoUrl) {
+      projectLinks.append(makeLink("GitHub repo ↗", project.repoUrl, "text-link"));
+    }
+    if (projectLinks.childElementCount > 0) copy.append(projectLinks);
 
     const details = makeElement("details", "project-details");
     details.append(makeElement("summary", "", "My part in it"));

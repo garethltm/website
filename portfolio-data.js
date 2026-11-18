@@ -123,6 +123,7 @@ window.portfolioData = {
       description:
         "An independent product project, available to explore online.",
       url: "https://outliar-phi.vercel.app",
+      repoUrl: "https://github.com/garethltm/outliar",
       role: "Product development",
       accent: "lilac",
       mark: "O.",
@@ -154,6 +155,7 @@ window.portfolioData = {
       category: "Hackathon · 2023",
       description:
         "A collaborative build created for the WDCC × SESA Hackathon.",
+      repoUrl: "https://github.com/garethltm/victoryroyale",
       role: "Front-end Developer",
       accent: "lilac",
       mark: "VR",
@@ -163,6 +165,7 @@ window.portfolioData = {
       name: "UMSA Jeopardy Game",
       category: "Web app · Community",
       description: "A Malaysian-themed Jeopardy game built for the community.",
+      repoUrl: "https://github.com/garethltm/this-project-is-in-jeopardy-v2",
       role: "Full-Stack Developer",
       accent: "peach",
       mark: "?",
@@ -173,6 +176,8 @@ window.portfolioData = {
       category: "Web app · Team project",
       description:
         "A collaborative software project focused on a browsable game library.",
+      repoUrl:
+        "https://github.com/garethltm/SoftwareDevelopment-compsci235project",
       role: "Full-Stack Developer",
       accent: "sage",
       mark: "GL",
@@ -183,6 +188,8 @@ window.portfolioData = {
       category: "Coursework · Python",
       description:
         "Experiments with K-nearest neighbours, support vector machines, neural networks, and outlier detection.",
+      repoUrl:
+        "https://github.com/garethltm/MachineLearning-compsci361code-dump",
       role: "Machine-learning coursework",
       accent: "lilac",
       mark: "ML",
