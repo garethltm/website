@@ -3,58 +3,131 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me</title>
+    <meta
+      name="description"
+      content="Gareth Lee — software, data, and ideas built with curiosity."
+    />
+    <meta name="theme-color" content="#f6f5f0" />
+    <title>Gareth Lee — Software & ideas</title>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("gareth-theme");
+        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+        document.documentElement.dataset.theme = savedTheme || preferredTheme;
+      } catch (error) {
+        console.warn("Could not read the saved color theme preference.", error);
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
     <link rel="stylesheet" href="styles.css" />
+    <script src="portfolio-data.js" defer></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="center">
-      <h1>Gareth Lee</h1>
-    </div>
-    <div class="orbit-container">
-        <div class="orbit orbit1">
-            <div class="orbit-name">
-              <span style="--i:1;">S</span>
-              <span style="--i:2;">k</span>
-              <span style="--i:3;">i</span>
-              <span style="--i:4;">l</span>
-              <span style="--i:5;">l</span>
-              <span style="--i:6;">s</span>
-            </div>
-            <div class="dot" data-description="JavaScript: Proficient in modern ES6+ syntax and frameworks like React and Vue."></div>
-          </div>
-        <div class="orbit orbit2">
-          <div class="orbit-name">
-            <span style="--i:1;">E</span>
-            <span style="--i:2;">x</span>
-            <span style="--i:3;">p</span>
-            <span style="--i:4;">e</span>
-            <span style="--i:5;">r</span>
-            <span style="--i:6;">i</span>
-            <span style="--i:7;">e</span>
-            <span style="--i:8;">n</span>
-            <span style="--i:9;">c</span>
-            <span style="--i:10;">e</span>
-          </div>
-          <div class="dot" data-description="Description for Dot 2"></div>
-        </div>
-        <div class="orbit orbit3">
-          <div class="orbit-name">
-            <span style="--i:1;">E</span>
-            <span style="--i:2;">d</span>
-            <span style="--i:3;">u</span>
-            <span style="--i:4;">c</span>
-            <span style="--i:5;">a</span>
-            <span style="--i:6;">t</span>
-            <span style="--i:7;">i</span>
-            <span style="--i:8;">o</span>
-            <span style="--i:9;">n</span>
-          </div>
-          <div class="dot" data-description="Description for Dot 3"></div>
-        </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Gareth Lee, home">
+        <span class="brand-mark" aria-hidden="true">G</span>
+        <span>Gareth Lee</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">☾</span>
+          <span class="theme-label">Dark mode</span>
+        </button>
+        <a class="header-link" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
       </div>
-      <!-- Add more orbits and dots as needed -->
-    </div>
-    <div class="tooltip" id="tooltip"></div>
-    <script src="script.js"></script>
+    </header>
+
+    <main id="main">
+      <section class="hero section-wrap" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> A little corner of the internet</p>
+          <h1 id="hero-title"></h1>
+          <p class="hero-intro" id="hero-intro"></p>
+          <div class="hero-actions" id="hero-actions"></div>
+          <div class="hero-socials" id="hero-socials" aria-label="Social profiles"></div>
+        </div>
+        <aside class="hero-note" aria-label="A note about my work">
+          <div class="note-topline"><span>FIELD NOTES</span><span>01 / 03</span></div>
+          <div class="note-art" aria-hidden="true">
+            <span class="note-orbit note-orbit-one"></span>
+            <span class="note-orbit note-orbit-two"></span>
+            <span class="note-sun"></span>
+            <span class="note-star note-star-one">+</span>
+            <span class="note-star note-star-two">+</span>
+          </div>
+          <p class="note-caption" id="hero-note"></p>
+          <span class="note-index">KUALA LUMPUR · MY</span>
+        </aside>
+      </section>
+
+      <section class="experience section-wrap section-block" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Work, learning, and everything between</p>
+            <h2 id="experience-title">Experience that adds up.</h2>
+          </div>
+          <span class="section-aside">A path through technology and people.</span>
+        </div>
+        <div class="experience-list" id="experience-list"></div>
+        <div class="resume-details">
+          <section class="resume-column" aria-labelledby="education-title">
+            <p class="eyebrow">The foundations</p>
+            <h3 id="education-title">Education</h3>
+            <div id="education-list"></div>
+          </section>
+          <section class="resume-column" aria-labelledby="certifications-title">
+            <p class="eyebrow">Validated along the way</p>
+            <h3 id="certifications-title">Certifications</h3>
+            <div class="credential-list" id="certification-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="work section-wrap section-block" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A selection of things I’ve made</p>
+            <h2 id="work-title">Curiosity, made tangible.</h2>
+          </div>
+          <span class="section-aside">A few things I’ve helped bring to life.</span>
+        </div>
+        <div class="project-filters" id="project-filters" role="group" aria-label="Filter projects"></div>
+        <div class="project-grid" id="project-list"></div>
+        <p class="filter-empty" id="filter-empty" hidden>No projects in this category just yet.</p>
+      </section>
+
+      <section class="about section-wrap section-block" id="about" aria-labelledby="about-title">
+        <div class="about-label">
+          <p class="eyebrow">A bit about me</p>
+          <h2 id="about-title">Always learning.<br />Always building.</h2>
+        </div>
+        <div class="about-copy">
+          <p id="about-description"></p>
+          <div class="interest-list" id="interest-list" aria-label="Areas of interest"></div>
+        </div>
+      </section>
+
+      <section class="contact section-wrap" id="contact" aria-labelledby="contact-title">
+        <p class="eyebrow">Have something in mind?</p>
+        <div class="contact-row">
+          <h2 id="contact-title">Let’s make it<br />a good one.</h2>
+          <a class="contact-link" id="contact-link">Find me online <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-wrap">
+      <span>© <span id="current-year"></span> Gareth Lee</span>
+      <span>Made with curiosity <span aria-hidden="true">✳</span></span>
+    </footer>
   </body>
 </html>
