@@ -17,3 +17,22 @@ Project entries support:
 The theme switch follows the visitor’s system preference initially and remembers their choice in browser storage. Project filters, expandable experience entries, and project details work without a build step or external runtime dependencies.
 
 Open `index.html` in a browser to preview the site.
+
+## Automatic GitHub projects
+
+Public repositories can be added to the Work section automatically:
+
+1. Add the GitHub topic `portfolio` to repositories you want to feature.
+2. Optionally publish a GitHub Release; the card category will use the latest release tag.
+3. The workflow at `.github/workflows/update-github-projects.yml` runs every six hours and can be started manually.
+4. It generates `github-projects.js`, commits the result, and GitHub Pages serves the new project cards.
+
+Archived, forked, private, and repositories without the `portfolio` topic are excluded. A repository that already has a matching manual entry in `portfolio-data.js` is shown only once.
+
+To update immediately, open **Actions → Update GitHub projects → Run workflow**.
+
+You can test or update the generated file locally:
+
+```sh
+GITHUB_TOKEN="$(gh auth token)" node scripts/update-github-projects.js
+```

@@ -4,6 +4,18 @@ if (!data) {
   throw new Error("Portfolio content is missing. Check portfolio-data.js.");
 }
 
+const githubProjects = window.githubPortfolioProjects || [];
+const manualProjects = data.projects || [];
+const githubRepoUrls = new Set(
+  githubProjects.map((project) => project.repoUrl),
+);
+data.projects = [
+  ...manualProjects.filter(
+    (project) => !project.repoUrl || !githubRepoUrls.has(project.repoUrl),
+  ),
+  ...githubProjects,
+];
+
 function makeElement(tag, className, text) {
   const element = document.createElement(tag);
   if (className) element.className = className;
@@ -24,8 +36,11 @@ function makeLink(label, url, className, external = true) {
 function renderHero() {
   document.title = `${data.name} — Cybersecurity & delivery`;
   document.querySelector(".brand span:last-child").textContent = data.name;
-  document.querySelector(".brand").setAttribute("aria-label", `${data.name}, home`);
-  document.querySelector(".note-index").textContent = data.location.toUpperCase();
+  document
+    .querySelector(".brand")
+    .setAttribute("aria-label", `${data.name}, home`);
+  document.querySelector(".note-index").textContent =
+    data.location.toUpperCase();
   document.querySelector(".note-topline span:last-child").textContent =
     `01 / ${String(data.projects.length).padStart(2, "0")}`;
   document.querySelector("#hero-title").textContent = data.headline;
@@ -33,10 +48,20 @@ function renderHero() {
   document.querySelector("#hero-note").textContent = data.note;
 
   const actions = document.querySelector("#hero-actions");
-  const experienceLink = makeElement("a", "button button-primary", "Explore my experience");
+  const experienceLink = makeElement(
+    "a",
+    "button button-primary",
+    "Explore my experience",
+  );
   experienceLink.href = "#experience";
   actions.append(experienceLink);
-  actions.append(makeLink("Connect on LinkedIn ↗", data.links.linkedin, "button button-quiet"));
+  actions.append(
+    makeLink(
+      "Connect on LinkedIn ↗",
+      data.links.linkedin,
+      "button button-quiet",
+    ),
+  );
 
   const socials = document.querySelector("#hero-socials");
   socials.append(makeLink("LinkedIn ↗", data.links.linkedin, "social-link"));
@@ -53,7 +78,9 @@ function renderExperience() {
     title.append(makeElement("span", "experience-role", experience.role));
     title.append(makeElement("span", "experience-company", experience.company));
     summary.append(title);
-    summary.append(makeElement("span", "experience-category", experience.category));
+    summary.append(
+      makeElement("span", "experience-category", experience.category),
+    );
     summary.append(makeElement("span", "experience-dates", experience.dates));
     const expandIcon = makeElement("span", "expand-icon");
     expandIcon.setAttribute("aria-hidden", "true");
@@ -61,7 +88,9 @@ function renderExperience() {
     details.append(summary);
 
     const content = makeElement("div", "experience-content");
-    content.append(makeElement("p", "experience-summary-text", experience.summary));
+    content.append(
+      makeElement("p", "experience-summary-text", experience.summary),
+    );
     const highlights = makeElement("ul", "experience-highlights");
     experience.highlights.forEach((highlight) => {
       highlights.append(makeElement("li", "", highlight));
@@ -75,21 +104,28 @@ function renderExperience() {
   data.education.forEach((education) => {
     const item = makeElement("article", "education-item");
     item.append(makeElement("h4", "", education.qualification));
-    item.append(makeElement("p", "education-institution", education.institution));
+    item.append(
+      makeElement("p", "education-institution", education.institution),
+    );
     item.append(makeElement("p", "education-focus", education.focus));
     educationList.append(item);
   });
 
   const certificationList = document.querySelector("#certification-list");
   data.certifications.forEach((certification) => {
-    certificationList.append(makeElement("span", "credential-pill", certification));
+    certificationList.append(
+      makeElement("span", "credential-pill", certification),
+    );
   });
 }
 
 function renderProjects() {
   const list = document.querySelector("#project-list");
   const filters = document.querySelector("#project-filters");
-  const categories = ["All", ...new Set(data.projects.map((project) => project.filter))];
+  const categories = [
+    "All",
+    ...new Set(data.projects.map((project) => project.filter)),
+  ];
   list.dataset.activeFilter = "All";
 
   categories.forEach((category, index) => {
@@ -115,10 +151,14 @@ function renderProjects() {
 
     const projectLinks = makeElement("div", "project-links");
     if (project.url) {
-      projectLinks.append(makeLink("Visit project ↗", project.url, "text-link"));
+      projectLinks.append(
+        makeLink("Visit project ↗", project.url, "text-link"),
+      );
     }
     if (project.repoUrl) {
-      projectLinks.append(makeLink("GitHub repo ↗", project.repoUrl, "text-link"));
+      projectLinks.append(
+        makeLink("GitHub repo ↗", project.repoUrl, "text-link"),
+      );
     }
     if (projectLinks.childElementCount > 0) copy.append(projectLinks);
 
@@ -143,7 +183,8 @@ function renderProjects() {
       );
     });
     list.querySelectorAll(".project-card").forEach((card) => {
-      const isVisible = activeFilter === "All" || card.dataset.category === activeFilter;
+      const isVisible =
+        activeFilter === "All" || card.dataset.category === activeFilter;
       card.hidden = !isVisible;
     });
   });
@@ -158,7 +199,8 @@ function renderAbout() {
   document.querySelector("#contact-link").href = data.links.linkedin;
   document.querySelector("#contact-link").target = "_blank";
   document.querySelector("#contact-link").rel = "noopener noreferrer";
-  document.querySelector("#current-year").textContent = new Date().getFullYear();
+  document.querySelector("#current-year").textContent =
+    new Date().getFullYear();
 }
 
 function setupThemeToggle() {
@@ -173,7 +215,10 @@ function setupThemeToggle() {
       ? "#20221f"
       : "#f6f5f0";
     button.setAttribute("aria-pressed", String(isDark));
-    button.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
+    button.setAttribute(
+      "aria-label",
+      `Switch to ${isDark ? "light" : "dark"} mode`,
+    );
     button.title = `Switch to ${isDark ? "light" : "dark"} mode`;
     icon.textContent = isDark ? "☀" : "☾";
     label.textContent = isDark ? "Light mode" : "Dark mode";
